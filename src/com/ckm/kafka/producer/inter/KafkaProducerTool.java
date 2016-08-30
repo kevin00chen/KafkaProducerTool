@@ -7,22 +7,22 @@ import java.util.Properties;
  */
 public interface KafkaProducerTool {
     /**
-     * ·¢²¼ÏûÏ¢£¬Ö¸¶¨topic
+     * å‘å¸ƒæ¶ˆæ¯ï¼ŒæŒ‡å®štopic
      * @param topic
      * @param message
      */
     void publishMessage(String topic, String message);
 
     /**
-     * ·¢²¼ÏûÏ¢£¬
-     * Ê¹ÓÃkafkaconfig.propertiesÖĞÅäÖÃµÄapp.topic²ÎÊı£¬
-     * Èç¹û¸Ã²ÎÊıÎªÉèÖÃ£¬ÔòÄ¬ÈÏtopic="default-topic"
+     * å‘å¸ƒæ¶ˆæ¯ï¼Œ
+     * ä½¿ç”¨kafkaconfig.propertiesä¸­é…ç½®çš„app.topicå‚æ•°ï¼Œ
+     * å¦‚æœè¯¥å‚æ•°ä¸ºè®¾ç½®ï¼Œåˆ™é»˜è®¤topic="default-topic"
      * @param message
      */
     void publishMessage(String message);
 
     /**
-     * ·¢²¼ÏûÏ¢£¬Ö¸¶¨topic£¬Ö¸¶¨·ÖÇøkey£¬Ö¸¶¨ÏûÏ¢ÄÚÈİ
+     * å‘å¸ƒæ¶ˆæ¯ï¼ŒæŒ‡å®štopicï¼ŒæŒ‡å®šåˆ†åŒºkeyï¼ŒæŒ‡å®šæ¶ˆæ¯å†…å®¹
      * @param topic
      * @param partitionKey
      * @param message
@@ -30,16 +30,16 @@ public interface KafkaProducerTool {
     void publishPartitionedMessage(String topic, String partitionKey, String message);
 
     /**
-     * ·¢²¼ÏûÏ¢£¬Ö¸¶¨·ÖÇøkey£¬Ö¸¶¨ÏûÏ¢ÄÚÈİ
-     * Ê¹ÓÃkafkaconfig.propertiesÖĞÅäÖÃµÄapp.topic²ÎÊı£¬
-     * Èç¹û¸Ã²ÎÊıÎªÉèÖÃ£¬ÔòÄ¬ÈÏtopic="default-topic"
+     * å‘å¸ƒæ¶ˆæ¯ï¼ŒæŒ‡å®šåˆ†åŒºkeyï¼ŒæŒ‡å®šæ¶ˆæ¯å†…å®¹
+     * ä½¿ç”¨kafkaconfig.propertiesä¸­é…ç½®çš„app.topicå‚æ•°ï¼Œ
+     * å¦‚æœè¯¥å‚æ•°ä¸ºè®¾ç½®ï¼Œåˆ™é»˜è®¤topic="default-topic"
      * @param partitionKey
      * @param message
      */
     void publishPartitionedMessage(String partitionKey, String message);
 
     /**
-     * ÉèÖÃProducerµÄ²ÎÊıÅäÖÃ
+     * è®¾ç½®Producerçš„å‚æ•°é…ç½®
      * @param producerProperties
      */
     void setProducerProperties(Properties producerProperties);
@@ -47,7 +47,7 @@ public interface KafkaProducerTool {
     public Properties getProducerProperties();
 
     /**
-     * ÉèÖÃ¶ÁÈ¡ÅäÖÃÎÄ¼şµÄ²ÎÊıÅäÖÃ
+     * è®¾ç½®è¯»å–é…ç½®æ–‡ä»¶çš„å‚æ•°é…ç½®
      * @param configProperties
      */
     void setConfigProperties(Properties configProperties);

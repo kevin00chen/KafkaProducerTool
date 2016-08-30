@@ -27,7 +27,7 @@ public class KafkaProducerToolImpl implements KafkaProducerTool {
 
         producerProperties = new Properties();
         for (String configStr : configProperties.stringPropertyNames()) {
-            // ·Çapplication×Ô¶¨Òå²ÎÊı
+            // éapplicationè‡ªå®šä¹‰å‚æ•°
             if (!configStr.startsWith("app."))
                 if (producerProperties.get(configStr) == null)
                     producerProperties.put(configStr, configProperties.getProperty(configStr));
@@ -38,7 +38,7 @@ public class KafkaProducerToolImpl implements KafkaProducerTool {
     }
 
     /**
-     * »ñÈ¡Ä¬ÈÏconfig.properties¶ÔÏó
+     * è·å–é»˜è®¤config.propertieså¯¹è±¡
      * @return
      */
     private Properties getDefaultConfigProperties() {

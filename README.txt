@@ -1,36 +1,36 @@
-Õâ¸öÏîÄ¿¶ÔKafkaµÄproducer½øĞĞ·â×°£¬Ê¹µÃProducerµÄÊ¹ÓÃÄÜ¹»×î¼òµ¥»¯¡£
+è¿™ä¸ªé¡¹ç›®å¯¹Kafkaçš„producerè¿›è¡Œå°è£…ï¼Œä½¿å¾—Producerçš„ä½¿ç”¨èƒ½å¤Ÿæœ€ç®€å•åŒ–ã€‚
 
 
-ËùÓĞÅäÖÃ²ÎÊı¶¼Ğ´Èëkafkaconfig.propertiesÎÄ¼şÖĞ£¬²ÎÊıÖ÷Òª·ÖÎªÁ½ÖÖ£º
-1¡¢ÓÃ»§×Ô¶¨Òå²ÎÊı
-ÕâÀà²ÎÊıĞèÒªÒÔ"app."¿ªÍ·£¬
-±ÈÈçÖ¸¶¨topic£¬app.tipic=test-topic
+æ‰€æœ‰é…ç½®å‚æ•°éƒ½å†™å…¥kafkaconfig.propertiesæ–‡ä»¶ä¸­ï¼Œå‚æ•°ä¸»è¦åˆ†ä¸ºä¸¤ç§ï¼š
+1ã€ç”¨æˆ·è‡ªå®šä¹‰å‚æ•°
+è¿™ç±»å‚æ•°éœ€è¦ä»¥"app."å¼€å¤´ï¼Œ
+æ¯”å¦‚æŒ‡å®štopicï¼Œapp.tipic=test-topic
 
-2¡¢Kafka Producer²ÎÊı
-ÕâÀà²ÎÊı¶¼ÊÇkafka producerµÄ²ÎÊı£¬²ÎÊıµÄkeyºÍvalue±ØĞë·ûºÏkafkaµÄ¹æ·¶£¬
-¸ü¶à²ÎÊı¿ÉÒÔ²Î¿¼¹Ù·½ÎÄµµ£ºhttp://kafka.apache.org/documentation.html#producerconfigs
+2ã€Kafka Producerå‚æ•°
+è¿™ç±»å‚æ•°éƒ½æ˜¯kafka producerçš„å‚æ•°ï¼Œå‚æ•°çš„keyå’Œvalueå¿…é¡»ç¬¦åˆkafkaçš„è§„èŒƒï¼Œ
+æ›´å¤šå‚æ•°å¯ä»¥å‚è€ƒå®˜æ–¹æ–‡æ¡£ï¼šhttp://kafka.apache.org/documentation.html#producerconfigs
 
-Ê¹ÓÃÊ¾Àı£º
-1¡¢×î¼òµ¥µÄµ÷ÓÃ
+ä½¿ç”¨ç¤ºä¾‹ï¼š
+1ã€æœ€ç®€å•çš„è°ƒç”¨
 KafkaProducerTool kafkaProducerTool = new KafkaProducerToolImpl();
 kafkaProducerTool.publishMessage("test message");
-ÕâÁ½ĞĞ´úÂë£¬¾Í»á½«"test message"ÒÔkafkaconfig.propertiesÎÄ¼şÖĞµÄÅäÖÃĞ´Èë¶ÔÓ¦µÄbrokerµÄtopicÖĞ
+è¿™ä¸¤è¡Œä»£ç ï¼Œå°±ä¼šå°†"test message"ä»¥kafkaconfig.propertiesæ–‡ä»¶ä¸­çš„é…ç½®å†™å…¥å¯¹åº”çš„brokerçš„topicä¸­
 
-2¡¢Èç¹û´úÂëÖĞÁÙÊ±ĞŞ¸ÄÒ»Ğ©Producer²ÎÊı£¬
+2ã€å¦‚æœä»£ç ä¸­ä¸´æ—¶ä¿®æ”¹ä¸€äº›Producerå‚æ•°ï¼Œ
 KafkaProducerTool kafkaProducerTool = new KafkaProducerToolImpl();
 Properties producerProperties = kafkaProducerTool.getProducerProperties();
 producerProperties.put("xx", "yy");
 kafkaProducerTool.publishMessage("test message");
 
-3¡¢×Ô¶¨ÒåParititionerµÄProducer
-ÓĞÁ½ÖÖ°ì·¨aºÍb£º
-(a)ÔÚkafkaconfig.propertiesÖĞĞÂÔöÒ»¸öÅäÖÃ²ÎÊıpartitioner.class=com.xx.yy.TestPartitioner
-(b)Ê¹ÓÃ2ÖĞµÄ·½·¨£¬»ñÈ¡producerProperties
+3ã€è‡ªå®šä¹‰Parititionerçš„Producer
+æœ‰ä¸¤ç§åŠæ³•aå’Œbï¼š
+(a)åœ¨kafkaconfig.propertiesä¸­æ–°å¢ä¸€ä¸ªé…ç½®å‚æ•°partitioner.class=com.xx.yy.TestPartitioner
+(b)ä½¿ç”¨2ä¸­çš„æ–¹æ³•ï¼Œè·å–producerProperties
 Properties producerProperties = kafkaProducerTool.getProducerProperties();
 producerProperties.put("partitioner.class", "SimplePartitioner");
 
 
-Í¬Ê±£¬Ò²¿ÉÒÔÔÚ×Ô¼ºµÄÏîÄ¿ÖĞÊ¹ÓÃ×Ô¶¨ÒåµÄÅäÖÃÎÄ¼şÉú³ÉÒ»¸öPropertiesÀàĞÍµÄconfigProperties¶ÔÏó£¬È»ºósetµ½KafkaProducerToolÖĞ¡£
-Ò²¿É»ùÓÚKafkaProducerTool½Ó¿Ú£¬¶¨Òå×Ô¼ºµÄProducerToolÀà¡£
+åŒæ—¶ï¼Œä¹Ÿå¯ä»¥åœ¨è‡ªå·±çš„é¡¹ç›®ä¸­ä½¿ç”¨è‡ªå®šä¹‰çš„é…ç½®æ–‡ä»¶ç”Ÿæˆä¸€ä¸ªPropertiesç±»å‹çš„configPropertieså¯¹è±¡ï¼Œç„¶åsetåˆ°KafkaProducerToolä¸­ã€‚
+ä¹Ÿå¯åŸºäºKafkaProducerToolæ¥å£ï¼Œå®šä¹‰è‡ªå·±çš„ProducerToolç±»ã€‚
 
-¸ü¶àÊ¹ÓÃ·½·¨´ıºóĞø½øÒ»²½¿ª·¢¡£¡£¡£¡£
+æ›´å¤šä½¿ç”¨æ–¹æ³•å¾…åç»­è¿›ä¸€æ­¥å¼€å‘ã€‚ã€‚ã€‚ã€‚
