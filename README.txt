@@ -16,6 +16,11 @@ KafkaProducerTool kafkaProducerTool = new KafkaProducerToolImpl();
 kafkaProducerTool.publishMessage("test message");
 这两行代码，就会将"test message"以kafkaconfig.properties文件中的配置写入对应的broker的topic中
 
+上面代码中，将使用该项目中的kafkaconfig.properties配置文件。
+如果想要加载指定路径上的配置文件，可以使用带配置文件路径参数的构造方法，如下所示
+KafkaProducerTool kafkaProducerTool = new KafkaProducerToolImpl(""D:\\userconfig.properties)
+此时会加载指定路径下的配置文件生成新的Producer工具
+
 2、如果代码中临时修改一些Producer参数，
 KafkaProducerTool kafkaProducerTool = new KafkaProducerToolImpl();
 Properties producerProperties = kafkaProducerTool.getProducerProperties();

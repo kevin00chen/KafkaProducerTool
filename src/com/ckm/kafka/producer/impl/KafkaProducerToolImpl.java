@@ -5,6 +5,7 @@ import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -23,7 +24,12 @@ public class KafkaProducerToolImpl implements KafkaProducerTool {
 
 
     public KafkaProducerToolImpl() {
-        configProperties = getDefaultConfigProperties();
+        this("default");
+    }
+
+
+    public KafkaProducerToolImpl(String configFilePath) {
+        configProperties = generateConfigProperties(configFilePath);
 
         producerProperties = new Properties();
         for (String configStr : configProperties.stringPropertyNames()) {
@@ -37,14 +43,19 @@ public class KafkaProducerToolImpl implements KafkaProducerTool {
         producer = new Producer<String, String>(producerConfig);
     }
 
+
     /**
      * 获取默认config.properties对象
      * @return
      */
-    private Properties getDefaultConfigProperties() {
+    private Properties generateConfigProperties(String configFilePath) {
         Properties properties = new Properties();
-        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kafkaconfig.properties");
+        InputStream inputStream;
         try {
+            if (configFilePath.equals("default"))
+                inputStream = this.getClass().getClassLoader().getResourceAsStream("kafkaconfig.properties");
+            else
+                inputStream = new FileInputStream(configFilePath);
 
             properties.load(inputStream);
         } catch (IOException e) {
